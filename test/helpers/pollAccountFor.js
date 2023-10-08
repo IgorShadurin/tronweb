@@ -9,7 +9,7 @@ module.exports = async function pollAccountFor(address, property, value = false,
         if(Date.now() > now + timeout) {
             throw new Error('Timeout...');
         }
-        wait(interval);
+        await wait(interval);
         let result = await tronWeb.trx.getAccount(address);
         if(typeof property === 'string') {
             let data = _.get(result, property)
